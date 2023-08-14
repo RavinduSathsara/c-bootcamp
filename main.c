@@ -3,6 +3,16 @@
 
 int main()
 {
-    printf("Hello world!\n");
+    int firstValue = 4;
+
+    int secValue = 9;
+
+
+    int total = firstValue + secValue;
+
+
+   cout("%d\n",total);
     return 0;
 }
+
+
