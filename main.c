@@ -1,44 +1,67 @@
 #include <stdio.h>
-
-#define MAX_SIZE 100
+#define MAX_SIZE 5
 
 int stack[MAX_SIZE];
-int top = -1;
+int top = -1;  // Initialize stack top as -1
 
-void push(int value) {
-    if (top >= MAX_SIZE - 1) {
+int isEmpty() {
+    return top == -1;
+}
+
+int isFull() {
+    return top == MAX_SIZE - 1;
+}
+
+void push(int item) {
+    if (isFull()) {
         printf("Stack overflow!\n");
-        return;
+    } else {
+        stack[++top] = item;
     }
-    stack[++top] = value;
 }
 
 int pop() {
-    if (top == -1) {
+    if (isEmpty()) {
         printf("Stack underflow!\n");
-        return -1; // You might want to handle underflow differently
+        return -1;  // You can choose a different error code
+    } else {
+        return stack[top--];
     }
-    return stack[top--];
 }
 
 int peek() {
-    if (top == -1) {
+    if (isEmpty()) {
         printf("Stack is empty!\n");
-        return -1; // Or handle this case differently
+        return -1;  // You can choose a different error code
+    } else {
+        return stack[top];
     }
-    return stack[top];
+}
+
+void deleteStack() {
+    top = -1; // Reset top to indicate an empty stack
 }
 
 int main() {
     push(10);
     push(20);
     push(30);
+    push(20);
+    push(30);
+    push(30);
 
-    printf("Top element: %d\n", peek()); // Should print 30
+    printf("Top item: %d\n", peek()); // Should print 30
 
-    pop();
+    printf("Popped item: %d\n", pop()); // Should print 30
+    printf("Popped item: %d\n", pop()); // Should print 20
 
-    printf("Top element after pop: %d\n", peek()); // Should print 20
+    deleteStack(); // Clears the stack
+
+    if (isEmpty()) {
+        printf("Stack is empty now.\n");
+    } else {
+        printf("Stack is not empty.\n");
+    }
 
     return 0;
 }
