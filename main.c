@@ -48,7 +48,7 @@ int main() {
     push(30);
     push(20);
     push(30);
-    push(30);
+
 
     printf("Top item: %d\n", peek()); // Should print 30
 
