@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_SIZE 5
+#define MAX_SIZE 100
 
 int stack[MAX_SIZE];
 int top = -1;  // Initialize stack top as -1
@@ -46,16 +46,17 @@ int main() {
     push(10);
     push(20);
     push(30);
-    push(20);
-    push(30);
-
 
     printf("Top item: %d\n", peek()); // Should print 30
 
-    printf("Popped item: %d\n", pop()); // Should print 30
-    printf("Popped item: %d\n", pop()); // Should print 20
+    //printf("Popped item: %d\n", pop()); // Should print 30
+    //printf("Popped item: %d\n", pop()); // Should print 20
+
+    printf("%d\n",top);
 
     deleteStack(); // Clears the stack
+
+      printf("%d\n",top);
 
     if (isEmpty()) {
         printf("Stack is empty now.\n");
